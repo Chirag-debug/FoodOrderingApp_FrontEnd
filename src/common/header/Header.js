@@ -516,10 +516,12 @@ class Header extends Component {
         //check the password has  at least one capital letter, one small letter, one number, and one special character
         const isValidPassword = new RegExp('^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$');
         if (signupPasswordRequired === false && !isValidPassword.test(this.state.signupPassword)) {
-            this.setState({
+            this.setState(
+                {
                 signupPasswordRequiredMessage: "Password must contain at least one capital letter, one small letter, one number, and one special character",
                 signupPasswordRequired: "dispBlock"
-            });
+            }
+            );
             return;
         }
 
@@ -558,6 +560,7 @@ class Header extends Component {
     // calls when value of the password field changes in signup form
     inputSignupPasswordChangeHandler = (e) => {
         this.setState({ signupPassword: e.target.value });
+        console.log(this.state.signupPassword);
     }
 
     // calls when value of the contact no field changes in signup form
